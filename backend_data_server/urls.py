@@ -1,9 +1,7 @@
-# ...existing code...
 from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("homepage/", include("backend_data_server.homepage.urls")),
+    path('demo/rest/api/', include('demo_rest_api.urls')),
 ]
-# ...existing code...
