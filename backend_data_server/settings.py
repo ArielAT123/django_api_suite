@@ -12,11 +12,20 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+import firebase_admin
+from firebase_admin import credentials
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Coloque la ruta relativa al archivo con la clave privada
 
+
+# Inicialice la conexión con el Realtime Database con la clave privada y la URL de referencia
+FIREBASE_CREDENTIALS_PATH = credentials.Certificate(os.path.join(BASE_DIR, 'secrets', 'landing-key.json'))
+firebase_admin.initialize_app(FIREBASE_CREDENTIALS_PATH, {
+    'databaseURL': 'https://dawn1-84b4b-default-rtdb.firebaseio.com/'
+})
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -41,6 +50,8 @@ INSTALLED_APPS = [
 ##    'homepage',
     "rest_framework",
     'demo_rest_api',
+    "firebase_admin",
+
 
 
 ]
